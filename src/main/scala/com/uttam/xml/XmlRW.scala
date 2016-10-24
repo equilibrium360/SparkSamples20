@@ -33,7 +33,7 @@ object XmlRW {
 
     import ss.implicits._
 
-    //Specifying Schema is optional
+    //Specifying Schema  is optional
     val customSchema = StructType(Array(
       StructField("_id", StringType, nullable = true),
       StructField("author", StringType, nullable = true),
