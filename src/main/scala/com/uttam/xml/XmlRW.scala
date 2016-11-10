@@ -10,6 +10,10 @@ import org.apache.spark.sql.functions._
 
 /**
   * Created by UNIVERSE on 10/14/16.
+  *
+  * Read XML
+  * use Explode
+  * Use collec_list()
   */
 
 
@@ -51,32 +55,16 @@ object XmlRW {
     xmlDF.printSchema()
 
     println(xmlDF.schema)
+
+    //Explode Function
    val flatten =  xmlDF.toDF().select($"author", $"genre", $"title",
 explode($"reviews.review").as("reviews_flat"))
 
 
 
+    //Perform aggregation on single column
+    //To
     flatten.groupBy($"genre", $"title").agg(collect_list($"author")).show();
-   //
-
-
-   // flatten.map(r => Row(5, Row(88))).groupBy($"i").agg(collect_list($"y").as("ssss")).toDF().select($"i", explode($"ssss").as("ssss_flat")).show()
-
-   // flatten.toDF().map[hgRow ](r => Row(44)).show()
-
-
-   // flatten.groupBy($"genre", $"title").agg($"author").show();
-
-
-    //flatten.map(r => Test(5, NestedTest(88))).groupByKey(tt => tt.i).reduceGroups((f,g) => f. ).toDF("one", "two").show()
-
-
-   // xmlDF.groupByKey(r => r.get(1)).keys.show()
-
-
-//Testing Group By Functionality
-
-
 
 
 
