@@ -74,6 +74,8 @@ explode($"reviews.review").as("reviews_flat"))
    // xmlDF.groupByKey(r => r.get(1)).keys.show()
 
 
+//Testing Group By Functionality
+
 
 
 
