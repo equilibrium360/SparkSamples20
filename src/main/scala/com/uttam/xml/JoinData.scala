@@ -2,6 +2,7 @@ package com.uttam.xml
 
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.types.{StructField, IntegerType, StringType, StructType}
+import org.apache.spark.sql.functions._
 
 /**
   * Created by UNIVERSE on 11/9/16.
@@ -34,7 +35,7 @@ object JoinData {
 
 
     val userSchema = StructType(Array(
-      StructField("userid", IntegerType, true),
+      StructField("uid", IntegerType, true),
       StructField("age", StringType, true),
       StructField("gender", StringType, true),
       StructField("occupation", StringType, true),
@@ -48,9 +49,11 @@ object JoinData {
       .schema(userSchema)
       .load("datafiles/movie/users.txt")
 
-      val joinedData = ratingDF.join(userDF,(userDF("userid") === ratingDF("userid")),"LeftOuter" )
+      val joinedData = ratingDF.join(userDF,(userDF("uid") === ratingDF("userid")), "inner" )
 
-    joinedData.show()
+    joinedData.groupBy("userid").agg(max("age"), count("uid"), count("age")).show()
+
+   // joinedData.show()
 
 
 
