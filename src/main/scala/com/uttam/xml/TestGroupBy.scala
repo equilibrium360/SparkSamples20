@@ -6,6 +6,10 @@ import org.apache.spark.sql.functions._
 
 /**
   * Created by UNIVERSE on 11/1/16.
+  *
+  * Test GroupBy
+  * WithColumn
+  * Struct
   */
 object TestGroupBy {
 

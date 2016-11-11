@@ -34,6 +34,8 @@ object JoinData {
       .load("datafiles/movie/ratings.txt")
 
 
+
+
     val userSchema = StructType(Array(
       StructField("uid", IntegerType, true),
       StructField("age", StringType, true),
