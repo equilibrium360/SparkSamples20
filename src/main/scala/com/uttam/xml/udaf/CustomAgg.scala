@@ -18,6 +18,7 @@ class CustomAgg extends UserDefinedAggregateFunction {
                                   StructField("rating", StringType, true),
                                   StructField("timestamp", StringType, true))), true)))
 
+  //Intermediate Schema
 
   def bufferSchema:StructType = StructType(Array(StructField("ratingArray", ArrayType(StructType(Array(
 
@@ -69,21 +70,6 @@ class CustomAgg extends UserDefinedAggregateFunction {
     val tp = buffer.getSeq[Row](0)
     buffer.getSeq[Row](0)
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
