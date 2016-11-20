@@ -45,9 +45,22 @@ object UDFSample {
     ratingDF.withColumn("NewCol", getItemCodeUDF(ratingDF("itemid")) ).show()
 
 
+    //Another way of adding udf as regular function
+    val itemlbl = udf(getItemIdLabel(_:String))
+
+    ratingDF.withColumn("ItemLabel", itemlbl(ratingDF("itemid")) ).show()
 
 
 
+
+
+
+  }
+
+  // regular spark function
+  def getItemIdLabel(curId: String):String = {
+
+    return "ItemLabel"
 
   }
 
