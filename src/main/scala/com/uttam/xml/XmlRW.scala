@@ -69,6 +69,8 @@ explode($"reviews.review").as("reviews_flat"))
 
 
 
+
+
   }
 
 

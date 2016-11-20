@@ -1,16 +1,23 @@
 package com.uttam.xml
 
 import org.apache.spark.sql.SparkSession
-import org.apache.spark.sql.types.{StructField, IntegerType, StringType, StructType}
 import org.apache.spark.sql.functions._
+import org.apache.spark.sql.types.{StringType, IntegerType, StructField, StructType}
 
 /**
-  * Created by UNIVERSE on 11/9/16.
+  * Created by UNIVERSE on 11/20/16.
   *
-  * Join Dataframes on Multiple Keys.
-  * Set Broadcast Join
+  *
   */
-object JoinData {
+
+/*
+* create a properties file and specify while submitting application to spark
+*
+* Syntax
+*
+* spark-submit --properties-file prop.properties ..........
+* */
+object ConfigProperties {
 
   def main(args: Array[String]) = {
 

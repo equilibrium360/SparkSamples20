@@ -1,16 +1,14 @@
 package com.uttam.xml
 
 import org.apache.spark.sql.SparkSession
-import org.apache.spark.sql.types.{StructField, IntegerType, StringType, StructType}
 import org.apache.spark.sql.functions._
+import org.apache.spark.sql.types.{StringType, IntegerType, StructField, StructType}
 
 /**
-  * Created by UNIVERSE on 11/9/16.
-  *
-  * Join Dataframes on Multiple Keys.
-  * Set Broadcast Join
+  * Created by UNIVERSE on 11/20/16.
   */
-object JoinData {
+object TopN {
+
 
   def main(args: Array[String]) = {
 
@@ -57,13 +55,12 @@ object JoinData {
 
     val joinedData = ratingDF.join(userDF,(userDF("uid") === ratingDF("userid")), "inner" )
 
-    joinedData.groupBy("userid").agg(max("age"), count("uid"), count("age")).show()
+    joinedData.groupBy("userid").count().orderBy(desc("count")).show(10)
 
     // joinedData.show()
 
 
   }
-
 
 
 }
