@@ -109,10 +109,11 @@ object SkewJoin {
     val nonSkewedRatingDF = ratingDF.except(onlySkewedRatingDf)
 
 
-    val randInt = new Random()
+
 
 
     val getRandIntFun:(Int => Int)= (arg:Int) => {
+      val randInt = new Random()
        (randInt.nextInt(5))
     }
 
