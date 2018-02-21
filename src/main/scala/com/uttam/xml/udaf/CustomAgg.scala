@@ -20,6 +20,8 @@ class CustomAgg extends UserDefinedAggregateFunction {
 
   //Intermediate Schema
 
+
+
   def bufferSchema:StructType = StructType(Array(StructField("ratingArray", ArrayType(StructType(Array(
 
     StructField("itemid", StringType, true),

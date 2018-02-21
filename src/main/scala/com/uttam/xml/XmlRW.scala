@@ -5,6 +5,7 @@ import org.apache.spark
 import org.apache.spark.sql._
 import org.apache.spark.sql.types._
 import org.apache.spark.sql.functions._
+import org.apache.spark.util.LongAccumulator
 
 
 
@@ -35,7 +36,11 @@ object XmlRW {
       .getOrCreate()
 
 
+
     import ss.implicits._
+
+
+
 
     //Specifying Schema  is optional
     val customSchema = StructType(Array(
@@ -54,7 +59,46 @@ object XmlRW {
 
     xmlDF.printSchema()
 
-    println(xmlDF.schema)
+    //println(xmlDF.schema)
+
+    // PASS complex datatypes to UDF Function and return  Complex DataTypes
+    def getTinNode(node: Seq[Row]):String = {
+
+      println("Inside function")
+
+      println("Lengthhhh ")
+
+   /*   node.map(r => { val ed =  r.getAs[Seq[Row]]("address")
+                       val pr = ed.map(er => {
+                         er.getAs("addid")
+
+                         println("aaaa" + er.getAs("addid"))
+                       })
+
+
+
+        return "qqqqq"
+
+                      })
+                      */
+
+
+      return "Done"
+
+    }
+
+
+    val tinCheckUDF = udf(getTinNode(_:Seq[Row]))
+
+    xmlDF.withColumn("NewTin", tinCheckUDF(xmlDF("`tins`.`tin`"))).show()
+
+
+
+
+
+
+
+
 
     //Explode Function
    val flatten =  xmlDF.toDF().select($"author", $"genre", $"title",
