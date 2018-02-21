@@ -5,7 +5,7 @@ import com.typesafe.config.ConfigFactory
 /**
   * Created by MASTER on 2/20/2018.
   */
-class ExportTables {
+object ExportTables {
 
   def getTablesList()= {
     val tabList = ConfigFactory.load("export_tables.conf").getList("exportTables")
@@ -19,6 +19,8 @@ class ExportTables {
        clist.get(0).getList()*/
   }
   def main(args: Array[String]) {
+
+    getTablesList
 
   }
 
