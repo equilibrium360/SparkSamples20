@@ -14,7 +14,7 @@ object JobController {
    // println("seqComp "+ jobConfig.getConfig("seqComp"))
   //  val seqComp = jobConfig.getConfig("seqComp")
     println("confList "+ jobConfig.getList("seqComp"))
- /*   val clist = jobConfig.getConfigList("seqComp")
+ /*   val clist = jobConfig.getConfigList ("seqComp")
    println("size "+  clist.size())
     clist.get(0).getList()*/
   }
